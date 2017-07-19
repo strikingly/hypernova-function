@@ -23,8 +23,14 @@ function serialize(name, html) {
   return `${markup}`;
 }
 
-const renderFunction = (name, configureStore) => hypernova({
-  server: () => props => serialize(name, configureStore.server(props)),
+const renderFunction = (name, configureStore, { needSerialize = true } = {}) => hypernova({
+  server: () => (props) => {
+    const result = configureStore.server(props);
+    if (needSerialize) {
+      return serialize(name, result);
+    }
+    return result;
+  },
   client: () => {},
 });
 
