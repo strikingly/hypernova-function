@@ -32,7 +32,7 @@
     "window-or-global": "~1.0.1"
   },
   "peerDependencies": {
-    "hypernova": "~2.0.0",
+    "hypernova": "*",
     "react-dom": "~15.4.2"
   }
 }
